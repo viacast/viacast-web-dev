@@ -105,7 +105,7 @@ const latencia = ...
 
 ### Bons comentários
 
-Escreva comentários descritivos apenas quando necessário. Se o código pode ser entendido rapidamente sem necessidade de esclarecimento, ele dispensa comentários.
+Escreva comentários bem descritivos, e apenas quando necessário. Se o código pode ser entendido rapidamente sem necessidade de esclarecimento, ele dispensa comentários.
 
 ```js
 /* ✅ good comment. explains something that might not be obvious */
