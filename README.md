@@ -10,7 +10,7 @@ Crie um repositório `git` para cada uma. Ambas devem ser obrigatoriamente desen
 
 # Etapa 1: Backend
 
-O servidor consiste em um único projeto com três partes principais: banco de dados, servidor HTTP, comunicação em tempo real.
+O servidor consiste em um único projeto com três partes principais: banco de dados, servidor HTTP, e comunicação em tempo real.
 O projeto deve ser obrigatoriamente em Node, usando o framework [`express`](https://expressjs.com/) para o servidor HTTP, e o framework [TypeORM](https://typeorm.io/) para o banco de dados. Para fins de simplicidade, utilize o `sqlite` como driver para o banco de dados.
 
 O uso de outras tecnologias fica a seu critério, porém são sugeridas as que seguem:
@@ -19,11 +19,13 @@ O uso de outras tecnologias fica a seu critério, porém são sugeridas as que s
 
 ## Parte 1: Banco de dados
 
-O banco de dados consistirá de duas entidades: usuários e dispositivos. Com exceção da relação 1:N (um usuário pode possuir N dispositivos), fica a seu critério guardar outras informações. A estatísticas geradas pelos dispositivos não precisam ser armazenadas.
+O banco de dados consistirá de duas entidades: usuários e dispositivos. Com exceção da senha do usuário e relação 1:N (um usuário pode possuir N dispositivos), fica a seu critério guardar outras informações. A senha do usuário não deve ser armazenada como texto simples. 
+
+A estatísticas geradas pelos dispositivos não precisam ser armazenadas.
 
 ## Parte 2: Servidor HTTP
 
-O servidor HTTP deverá ter rotas para permitirem as operações de registro de usuários e dispositivos, autenticação, e listagem de dispositivos de um usuário. Fica a seu critério a criação de outras rotas com mais funcionalidades.
+O servidor HTTP deverá ter rotas para as operações de registro de usuários e dispositivos, autenticação, e listagem de dispositivos de um usuário. Fica a seu critério a criação de outras rotas com mais funcionalidades.
 
 ## Parte 3: Comunicação em tempo real
 
@@ -31,10 +33,11 @@ O servidor deve permitir comunicação em tempo real entre os dispositivos e os 
 
 # Etapa 2: Frontend
 
-A interface consiste em um único projeto com três partes principais: registro de usuários, painel de controle do usuário, painel de controle do dispositivo.
+A interface consiste em um único projeto com três partes principais: registro de usuários, painel de controle do usuário, e painel de controle do dispositivo.
 O projeto deve ser obrigatoriamente desenvolvido com o framework React, utilizando a funcionalidade de hooks (`useState()`, `useRef()`, ...), ao invés de componentes de classe, como o declarado a seguir:
 
-```js 
+```js
+/* ❌ don't use these!! */
 class MyComponent extends React.Component
 ```
 
@@ -45,7 +48,7 @@ O uso de outras tecnologias fica a seu critério, porém são sugeridas as que s
 
 ## Parte 1: Registro de usuários
 
-O registro de usuários pode ser simplificado, basta que haja nome de usuário e senha (a senha não deve ser armazenada como texto simples). A inclusão de outras informações de usuário fica a seu critério.
+O registro pode ser simplificado, como descrito [acima](#parte-1-banco-de-dados).
 
 ## Parte 2: Painel de controle do usuário
 
