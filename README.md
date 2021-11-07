@@ -85,8 +85,6 @@ Ambas partes do projeto deverão ser lançadas independentemente utilizando algu
 
 # Orientações gerais
 
-## Qualidade do código
-
 ### Linting
 
 Siga [essas orientações](https://www.notion.so/EditorConfig-5f494ae4b47248c1b16681ff74d6766c) para configuração das extensões EditorConfig, ESLint, e Prettier para o VSCode.
