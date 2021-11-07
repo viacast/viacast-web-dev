@@ -1,17 +1,39 @@
 # Teste de conhecimento em tecnologias web
 
-O desafio possui duas partes: desenvolvimento do frontend, e desenvolvimento do backend.
-Ambas as partes devem ser obrigatoriamente desenvolvidas utilizando TypeScript.
-
 O projeto consiste numa plataforma de monitoramento de estatísticas de dispositivos.
 Usuários podem se cadastrar na plataforma, e em seguida registrar novos dispositivos a serem monitorados.
 As estatísticas geradas são exibidas para o usuário através de gráficos.
 Cada usuário só pode monitorar as estatísticas dos próprios dispositivos.
 
-# Etapa 1: Frontend
+O desafio possui duas partes: desenvolvimento do backend, e desenvolvimento do frontend.
+Crie um repositório `git` para cada uma. Ambas devem ser obrigatoriamente desenvolvidas utilizando TypeScript.
+
+# Etapa 1: Backend
+
+O servidor consiste em um único projeto com três partes principais: banco de dados, servidor HTTP, comunicação em tempo real.
+O projeto deve ser obrigatoriamente em Node, usando o framework [`express`](https://expressjs.com/) para o servidor HTTP, e o framework [TypeORM](https://typeorm.io/) para o banco de dados. Para fins de simplicidade, utilize o `sqlite` como driver para o banco de dados.
+
+O uso de outras tecnologias fica a seu critério, porém são sugeridas as que seguem:
+
+- [`socket.io`](https://socket.io/) para comunicação em tempo real com os clientes (aplicação web)
+
+## Parte 1: Banco de dados
+
+O banco de dados consistirá de duas entidades: usuários e dispositivos. Com exceção da relação 1:N (um usuário pode possuir N dispositivos), fica a seu critério guardar outras informações. A estatísticas geradas pelos dispositivos não precisam ser armazenadas.
+
+## Parte 2: Servidor HTTP
+
+O servidor HTTP deverá ter rotas para permitirem as operações de registro de usuários e dispositivos, autenticação, e listagem de dispositivos de um usuário. Fica a seu critério a criação de outras rotas com mais funcionalidades.
+
+## Parte 3: Comunicação em tempo real
+
+O servidor deve permitir comunicação em tempo real entre os dispositivos e os usuários. Caso opte por utilizar `socket.io`, isso pode ser feito, por exemplo, com um evento em que o dispositivo submete as informações de latência para o servidor, e um evento em que o servidor repassa essas informações para o usuário.
+
+# Etapa 2: Frontend
 
 A interface consiste em um único projeto com três partes principais: registro de usuários, painel de controle do usuário, painel de controle do dispositivo.
 O projeto deve ser obrigatoriamente desenvolvido com o framework React, utilizando a funcionalidade de hooks (`useState()`, `useRef()`, ...), ao invés de componentes de classe, como o declarado a seguir:
+
 ```js 
 class MyComponent extends React.Component
 ```
@@ -54,8 +76,6 @@ Atente-se que existem situações em que essa operação não irá gerar valores
 
 Ajustes feitos nessas configurações devem refletir imediatamente nos dados enviados ao servidor (não deve existir botão de confirmar).
 
-# Etapa 2: Backend
-
 # Etapa 3: Deployment
 
 Ambas partes do projeto deverão ser lançadas independentemente utilizando algum serviço de deployment. O único critério é que tanto o frontend quanto o backend sejam acessíveis pela internet.
@@ -70,12 +90,13 @@ Siga [essas orientações](https://www.notion.so/EditorConfig-5f494ae4b47248c1b1
 
 ### Código em inglês
 
-Opte por nomes de variáveis em inglês.
+Opte por comentários e nomes de variáveis em inglês.
 
 ```js
-/* ok */
+/* ✅ ok */
 const latency = ...
-/* not ok */
+
+/* ❌ not ok */
 const latencia = ...
 ```
 
@@ -84,13 +105,17 @@ const latencia = ...
 Escreva comentários descritivos apenas quando necessário. Se o código pode ser entendido rapidamente sem necessidade de esclarecimento, ele dispensa comentários.
 
 ```js
-/* bad comment */
+/* ✅ good comment. explains something that might not be obvious */
+// accounting for pixel offset
+const adjustedWidth = width + 1;
+
+/* ❌ bad comment. states the obvious and doesn't explain what is being done */
 // adjusting width by 1
 const adjustedWidth = width + 1;
 
-/* good comment */
-// accounting for pixel offset
-const adjustedWidth = width + 1;
+/* ❌ bad comment. states the obvious */
+// calculating the area
+const area = Math.PI * radius**2;
 ```
 
 ### Versionamento
